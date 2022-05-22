@@ -13,7 +13,9 @@ We also have many more exiting features planned.
 
 v2.0.0.0
 
->2 new accesories (Re-added old items)
+This mod currently adds
+>2 new accesories 
+>1 new NPC
 
 --> Ultimite Elblem
 ---> Crafted with a WarriorEmblem, RangerEmblem, SorcererEmblem, SummonerEmblem, AvengerEmblem, and DestroyerEmblem at a mithril anvil
@@ -27,9 +29,9 @@ v2.0.0.0
 ---->Has the effects of the Master Ninja Gear and the Ankh Shield
 ----> Has the bonus perk of negating fall damage
 
-
-
-
+-->Mineral Specialist
+--->Spawns after eye of cthulu was defeated
+----> Sells ores and gems
 
 
 
