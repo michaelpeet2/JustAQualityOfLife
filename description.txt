@@ -1,6 +1,8 @@
 This is Just a Quality of Life Terraria Mod.
      by : michaelpeet2, Stab_Person, cyber
 
+v2.1.0.0
+
 So this has been in the works since we first released our mod in 2020. Yeah it's been a while, but first I would like to thank our new sprites Stab_Person who helped us inmprove some sprites.
 
 As we are beginners the stuff is very rudamentary. We will not have a regular update schedule, but will try to uopdate every so often. 
