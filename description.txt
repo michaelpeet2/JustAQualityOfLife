@@ -1,4 +1,34 @@
 This is Just a Quality of Life Terraria Mod.
      by : michaelpeet2, Stab_Person, cyber
 
-This is a test publish and currently contains no content.
+So this has been in the works since we first released our mod in 2020. Yeah it's been a while, but first I would like to thank our new sprites Stab_Person who helped us inmprove some sprites.
+
+As we are beginners the stuff is very rudamentary. We will not have a regular update schedule, but will try to uopdate every so often. 
+
+We have rebuilt our mod from the ground up, so it will take a while before all the items are back in the mod. 
+
+We also have many more exiting features planned.
+
+v2.0.0.0
+
+>2 new accesories (Re-added old items)
+
+--> Ultimite Elblem
+---> Crafted with a WarriorEmblem, RangerEmblem, SorcererEmblem, SummonerEmblem, AvengerEmblem, and DestroyerEmblem at a mithril anvil
+----> Grants 15% incresed of every damage type
+----> Grants 10% increased of every crit chance
+
+
+
+-->Master Ankh Gear
+---> Crafted with a Ankh shield and Master Ninja Gear at a mithril anvil
+---->Has the effects of the Master Ninja Gear and the Ankh Shield
+----> Has the bonus perk of negating fall damage
+
+
+
+
+
+
+
+   Lastly we would like to thank all the kind people on the Tmodloader Discord. Additionally thank you the people on the Terraria forums and the Github.
