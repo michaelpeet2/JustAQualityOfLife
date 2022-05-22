@@ -1,3 +1,3 @@
 displayName = Just a Quality of Life Terraria Mod
 author = michaelpeet2, Cyberspiderman, StabPerson
-version = 2.0.0.2
+version = 2.0.0.3
