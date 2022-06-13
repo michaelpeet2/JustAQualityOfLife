@@ -87,6 +87,47 @@ namespace JustAQualityOfLife
                 {
                     ingredient13.stack = 1;
                 }
+
+                //Hellstone Ore
+                if (recipe.TryGetIngredient(ItemID.Hellstone, out Item ingredient14) && recipe.TryGetIngredient(ItemID.Obsidian, out Item ingredient15))
+                {
+                    ingredient14.stack = 1;
+                }
+
+                //Demonite & Crimtaine
+                if(recipe.TryGetIngredient(ItemID.CrimtaneOre, out Item ingredient16))
+                {
+                    ingredient16.stack = 1;
+                }
+
+                if (recipe.TryGetIngredient(ItemID.DemoniteOre, out Item ingredient17))
+                {
+                    ingredient17.stack = 1;
+                }
+
+                //Attempt for Shroomite
+                if (recipe.TryGetIngredient(ItemID.ChlorophyteBar, out Item ingredient18) && recipe.TryGetIngredient(ItemID.GlowingMushroom, out Item ingredient19))
+                {
+                    ingredient19.stack = 1;
+                }
+
+                //meteorite
+                if (recipe.TryGetIngredient(ItemID.Meteorite, out Item ingredient20))
+                {
+                    ingredient20.stack = 1;
+                }
+
+                //Luminite
+                if (recipe.TryGetIngredient(ItemID.LunarOre, out Item ingredient21))
+                {
+                    ingredient21.stack = 1;
+                }
+
+                //Chlorophyte
+                if (recipe.TryGetIngredient(ItemID.ChlorophyteOre, out Item ingredient22))
+                {
+                    ingredient22.stack = 1;
+                }
             }
             #endregion
     }
