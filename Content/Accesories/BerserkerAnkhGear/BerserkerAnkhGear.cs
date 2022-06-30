@@ -29,7 +29,7 @@ namespace JustAQualityOfLife.Assets.Accesories.BerserkerAnkhGear
 		public override void UpdateAccessory(Player player, bool hideVisual) //grant immunities
 		{
 			//atkspeed
-			player.GetAttackSpeed(DamageClass.Generic) += 1.12f;
+			player.GetAttackSpeed(DamageClass.Generic) += .12f;
 
 			//debuffs
 			player.buffImmune[67] = true; //Burning
