@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Microsoft.Xna.Framework;
 
-namespace JustAQualityOfLife.Assets.Accesories.BerserkerAnkhGear
+namespace JustAQualityOfLife.Content.Accesories.BerserkerAnkhGear
 {
 	public class BerserkerAnkhGear : ModItem
 	{
