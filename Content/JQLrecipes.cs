@@ -9,14 +9,14 @@ namespace JustAQualityOfLife.Content
         public override void AddRecipes()
         {
 
-            Mod.CreateRecipe(ItemID.HermesBoots)
+            Recipe.Create(ItemID.HermesBoots)
                 .AddIngredient(ItemID.WoodGreaves)
                 .AddIngredient(ItemID.Silk, 12)
                 .AddIngredient(ItemID.SwiftnessPotion)
                 .AddTile(TileID.Anvils)
                 .Register();
 
-            Mod.CreateRecipe(ItemID.Extractinator)
+            Recipe.Create(ItemID.Extractinator)
                 .AddIngredient(ItemID.IronBar, 15)
                 .AddTile(TileID.Anvils)
                 .Register();

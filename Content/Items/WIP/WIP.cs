@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JustAQualityOfLife.Content.Items.NewFolder
 {
-    internal class Class1
+    internal class WIP
     {
     }
 }

@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace JustAQualityOfLife.Content.Accesories.BerserkerAnkhGear
 {
@@ -11,9 +12,9 @@ namespace JustAQualityOfLife.Content.Accesories.BerserkerAnkhGear
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Berserker Ankh Gear"); //changes the name of the item instead of just using the public class
-			Tooltip.SetDefault("Allows dash, wall climbing, and a chance to dodge attacks \nAllows immunity to most debuffs, knockback, and fall damage."); //Sets the tooltip description of the Item
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+			//DisplayName.SetDefault("Berserker Ankh Gear"); //changes the name of the item instead of just using the public class
+			//Tooltip.SetDefault("");
+			Item.ResearchUnlockCount = 1;
 		}
 
 		public override void SetDefaults()
@@ -22,11 +23,13 @@ namespace JustAQualityOfLife.Content.Accesories.BerserkerAnkhGear
 			Item.accessory = true; //Makes this equipment
 			Item.rare = ItemRarityID.Cyan; //Cyan Rarity
 			Item.value = 750000;// 75/5 = 15 so sell price is 15 and buy price is 15 this also affects reforge price
+			//Item.ToolTip("Allows dash, wall climbing, and a chance to dodge attacks \nAllows immunity to most debuffs, knockback, and fall damage.\nWIP currently uncraftable"); //Sets the tooltip description of the Item
 
 		}
 
 
-		public override void UpdateAccessory(Player player, bool hideVisual) //grant immunities
+        //Unfinished needs the other upgrades from beserker glove. Asside from Defence and Attackspeed
+        public override void UpdateAccessory(Player player, bool hideVisual) //grant immunities
 		{
 			//atkspeed
 			player.GetAttackSpeed(DamageClass.Generic) += .12f;
@@ -54,16 +57,17 @@ namespace JustAQualityOfLife.Content.Accesories.BerserkerAnkhGear
 			player.spikedBoots = 2;//Can Climb
 		}
 
-		public override void AddRecipes()
-		{
+		/*		public override void AddRecipes()
+				{
 
-			CreateRecipe()
-				.AddIngredient(ModContent.ItemType<Accesories.MasterAnkhGear.MasterAnkhGear>())
-				.AddIngredient(ItemID.BerserkerGlove)
-				.AddTile(TileID.MythrilAnvil)//mod.TileType("CrafterOqualityTile")
-				.Register();
+					CreateRecipe()
+						.AddIngredient(ModContent.ItemType<Accesories.MasterAnkhGear.MasterAnkhGear>())
+						.AddIngredient(ItemID.BerserkerGlove)
+						.AddTile(TileID.MythrilAnvil)//mod.TileType("CrafterOqualityTile")
+						.Register();
 
-		}
+				}
+			}
+		*/
 	}
-
 }
