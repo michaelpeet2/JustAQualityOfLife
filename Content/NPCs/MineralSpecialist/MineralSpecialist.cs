@@ -14,6 +14,9 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
     [AutoloadHead]
     public class MineralSpecialist : ModNPC
     {
+        public const string ShopName = "Shop";
+        public int NumberOfTimesTalkedTo = 0;
+
         public override void SetStaticDefaults()
         {
            // DisplayName.SetDefault("Mineral Specialist");
@@ -127,158 +130,160 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
         { // What the chat buttons are when you open up the chat UI
             button = Language.GetTextValue("LegacyInterface.28");
         }
-/*
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
-        {
-            if(firstButton)
-            {
-                shop = true;
-            }
-        }
-*/
-/*
-        public override void SetupShop(Chest shop, ref int nextSlot)
-        {
-            shop.item[nextSlot].SetDefaults(ItemID.CopperOre);
-            shop.item[nextSlot].shopCustomPrice = 85;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.TinOre);
-            shop.item[nextSlot].shopCustomPrice = 85;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.IronOre);
-            shop.item[nextSlot].shopCustomPrice = 160;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.LeadOre);
-            shop.item[nextSlot].shopCustomPrice = 160;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.SilverOre);
-            shop.item[nextSlot].shopCustomPrice = 235;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.TungstenOre);
-            shop.item[nextSlot].shopCustomPrice = 235;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.GoldOre);
-            shop.item[nextSlot].shopCustomPrice = 460;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.PlatinumOre);
-            shop.item[nextSlot].shopCustomPrice = 460;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.FossilOre);
-            shop.item[nextSlot].shopCustomPrice = 460;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.DesertFossil);
-            shop.item[nextSlot].shopCustomPrice = 1310;
-            nextSlot++;
-
-            if (NPC.downedBoss1)
-            {
-                shop.item[nextSlot].SetDefaults(ItemID.DemoniteOre);
-                shop.item[nextSlot].shopCustomPrice = 1310;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.CrimtaneOre);
-                shop.item[nextSlot].shopCustomPrice = 1310;
-                nextSlot++;
-            }
-
-            if (NPC.downedBoss2)
-            {
-                shop.item[nextSlot].SetDefaults(ItemID.Meteorite);
-                shop.item[nextSlot].shopCustomPrice = 210;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Obsidian);
-                shop.item[nextSlot].shopCustomPrice = 210;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.Hellstone);
-                shop.item[nextSlot].shopCustomPrice = 260;
-                nextSlot++;
-            }
-
-            if(Main.hardMode)
-            {
-                shop.item[nextSlot].SetDefaults(ItemID.CobaltOre);
-                shop.item[nextSlot].shopCustomPrice = 910;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.PalladiumOre);
-                shop.item[nextSlot].shopCustomPrice = 910;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.MythrilOre);
-                shop.item[nextSlot].shopCustomPrice = 1310;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.OrichalcumOre);
-                shop.item[nextSlot].shopCustomPrice = 13010;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.AdamantiteOre);
-                shop.item[nextSlot].shopCustomPrice = 17010;
-                nextSlot++;
-
-                shop.item[nextSlot].SetDefaults(ItemID.TitaniumOre);
-                shop.item[nextSlot].shopCustomPrice = 17010;
-                nextSlot++;
-
-                if(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+        /*
+                public override void OnChatButtonClicked(bool firstButton, ref bool shop)
                 {
-                    shop.item[nextSlot].SetDefaults(ItemID.ChlorophyteOre);
+                    if(firstButton)
+                    {
+                        shop = true;
+                    }
+                }
+        */
+
+        /*
+         * The old Shop
+                public override void SetupShop(Chest shop, ref int nextSlot)
+                {
+                    shop.item[nextSlot].SetDefaults(ItemID.CopperOre);
+                    shop.item[nextSlot].shopCustomPrice = 85;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.TinOre);
+                    shop.item[nextSlot].shopCustomPrice = 85;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.IronOre);
+                    shop.item[nextSlot].shopCustomPrice = 160;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.LeadOre);
+                    shop.item[nextSlot].shopCustomPrice = 160;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.SilverOre);
+                    shop.item[nextSlot].shopCustomPrice = 235;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.TungstenOre);
+                    shop.item[nextSlot].shopCustomPrice = 235;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.GoldOre);
+                    shop.item[nextSlot].shopCustomPrice = 460;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.PlatinumOre);
+                    shop.item[nextSlot].shopCustomPrice = 460;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.FossilOre);
+                    shop.item[nextSlot].shopCustomPrice = 460;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.DesertFossil);
+                    shop.item[nextSlot].shopCustomPrice = 1310;
+                    nextSlot++;
+
+                    if (NPC.downedBoss1)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.DemoniteOre);
+                        shop.item[nextSlot].shopCustomPrice = 1310;
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.CrimtaneOre);
+                        shop.item[nextSlot].shopCustomPrice = 1310;
+                        nextSlot++;
+                    }
+
+                    if (NPC.downedBoss2)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.Meteorite);
+                        shop.item[nextSlot].shopCustomPrice = 210;
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.Obsidian);
+                        shop.item[nextSlot].shopCustomPrice = 210;
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.Hellstone);
+                        shop.item[nextSlot].shopCustomPrice = 260;
+                        nextSlot++;
+                    }
+
+                    if(Main.hardMode)
+                    {
+                        shop.item[nextSlot].SetDefaults(ItemID.CobaltOre);
+                        shop.item[nextSlot].shopCustomPrice = 910;
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.PalladiumOre);
+                        shop.item[nextSlot].shopCustomPrice = 910;
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.MythrilOre);
+                        shop.item[nextSlot].shopCustomPrice = 1310;
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.OrichalcumOre);
+                        shop.item[nextSlot].shopCustomPrice = 13010;
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.AdamantiteOre);
+                        shop.item[nextSlot].shopCustomPrice = 17010;
+                        nextSlot++;
+
+                        shop.item[nextSlot].SetDefaults(ItemID.TitaniumOre);
+                        shop.item[nextSlot].shopCustomPrice = 17010;
+                        nextSlot++;
+
+                        if(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+                        {
+                            shop.item[nextSlot].SetDefaults(ItemID.ChlorophyteOre);
+                            shop.item[nextSlot].shopCustomPrice = 1510;
+                            nextSlot++;
+
+                            shop.item[nextSlot].SetDefaults(ItemID.HallowedBar);
+                            shop.item[nextSlot].shopCustomPrice = 1010;
+                            nextSlot++;
+                        }
+
+                        if(NPC.downedMoonlord)
+                        {
+                            shop.item[nextSlot].SetDefaults(ItemID.LunarOre);
+                            shop.item[nextSlot].shopCustomPrice = 3010;
+                            nextSlot++;
+                        }
+                    }
+
+                    shop.item[nextSlot].SetDefaults(ItemID.Amethyst);
+                    shop.item[nextSlot].shopCustomPrice = 385;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.Topaz);
+                    shop.item[nextSlot].shopCustomPrice = 760;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.Sapphire);
+                    shop.item[nextSlot].shopCustomPrice = 1135;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.Emerald);
                     shop.item[nextSlot].shopCustomPrice = 1510;
                     nextSlot++;
 
-                    shop.item[nextSlot].SetDefaults(ItemID.HallowedBar);
-                    shop.item[nextSlot].shopCustomPrice = 1010;
+                    shop.item[nextSlot].SetDefaults(ItemID.Ruby);
+                    shop.item[nextSlot].shopCustomPrice = 2260;
                     nextSlot++;
-                }
 
-                if(NPC.downedMoonlord)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.LunarOre);
+                    shop.item[nextSlot].SetDefaults(ItemID.Amber);
+                    shop.item[nextSlot].shopCustomPrice = 3010;
+                    nextSlot++;
+
+                    shop.item[nextSlot].SetDefaults(ItemID.Diamond);
                     shop.item[nextSlot].shopCustomPrice = 3010;
                     nextSlot++;
                 }
-            }
-
-            shop.item[nextSlot].SetDefaults(ItemID.Amethyst);
-            shop.item[nextSlot].shopCustomPrice = 385;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.Topaz);
-            shop.item[nextSlot].shopCustomPrice = 760;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.Sapphire);
-            shop.item[nextSlot].shopCustomPrice = 1135;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.Emerald);
-            shop.item[nextSlot].shopCustomPrice = 1510;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.Ruby);
-            shop.item[nextSlot].shopCustomPrice = 2260;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.Amber);
-            shop.item[nextSlot].shopCustomPrice = 3010;
-            nextSlot++;
-
-            shop.item[nextSlot].SetDefaults(ItemID.Diamond);
-            shop.item[nextSlot].shopCustomPrice = 3010;
-            nextSlot++;
-        }
-*/
+        */
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
             damage = 20;
