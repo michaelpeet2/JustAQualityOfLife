@@ -57,7 +57,7 @@ namespace JustAQualityOfLife.Content.Accesories.BerserkerAnkhGear
 			player.spikedBoots = 2;//Can Climb
 		}
 
-		/*		public override void AddRecipes()
+		public override void AddRecipes()
 				{
 
 					CreateRecipe()
@@ -67,7 +67,7 @@ namespace JustAQualityOfLife.Content.Accesories.BerserkerAnkhGear
 						.Register();
 
 				}
-			}
-		*/
+		
+
 	}
 }

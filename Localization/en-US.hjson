@@ -3,7 +3,12 @@ Mods: {
 		Items: {
 			BerserkerAnkhGear: {
 				DisplayName: Berserker Ankh Gear
-				Tooltip: ""
+				Tooltip:
+					'''
+					Allows dash, wall climbing, and a chance to dodge attacks 
+					Allows immunity to most debuffs, knockback, and fall damage.
+					WIP currently uncraftable
+					'''
 			}
 
 			MasterAnkhGear: {
@@ -49,6 +54,8 @@ Mods: {
 					LikeNPC_Princess: I like {NPCName}.
 					Princess_LovesNPC: I like {NPCName}.
 				}
+
+				Census.SpawnCondition: Conditions unknown
 			}
 		}
 	}

@@ -8,6 +8,7 @@ using Terraria.GameContent.Bestiary;
 using System.Collections.Generic;
 using Terraria.Utilities;
 using Terraria.Localization;
+using Terraria.GameContent;
 
 namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
 {
@@ -124,12 +125,33 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
             chat.Add("This message has a weight of 5, meaning it appears 5 times more often.", 5.0);
             chat.Add("This message has a weight of 0.1, meaning it appears 10 times as rare.", 0.1);
             return chat; // chat is implicitly cast to a string.
+        //Can be updated to a Localization firle, Example mod uses the following line of code for each line
+        //chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.RareDialogue"), 0.1); 
+        //The last number portion is optional, along with the comma befoire it and it adds weights to the frequency of the dialogue option
+        //More reasearch into Localization files and other of these files for text needs to be done
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         { // What the chat buttons are when you open up the chat UI
             button = Language.GetTextValue("LegacyInterface.28");
         }
+
+        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
+        {
+            if (firstButton)
+            {
+                shopName = "Shop"; 
+            }
+        }
+
+        public override void AddShops()
+        {
+            NPCShop shop = new(Type);
+            shop.Add(ItemID.CopperOre)
+            .Register();
+               //Credit to the Calamity mod for where I learned to make this lol
+        }
+
         /*
                 public override void OnChatButtonClicked(bool firstButton, ref bool shop)
                 {

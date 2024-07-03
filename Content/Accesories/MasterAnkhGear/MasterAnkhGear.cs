@@ -22,7 +22,7 @@ namespace JustAQualityOfLife.Content.Accesories.MasterAnkhGear
 			Item.accessory = true; //Makes this equipment
 			Item.rare = ItemRarityID.Cyan; //Cyan Rarity
 			Item.value = 750000;// 75/5 = 15 so sell price is 15 and buy price is 15 this also affects reforge price
-
+			
 		}
 
 
