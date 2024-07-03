@@ -80,24 +80,16 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
             });
         }
 
-        /*public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)
         {
-            for (int k = 0; k < 255; k++)
-            {
-                Player player = Main.player[k];
-                if (!player.active)
-                {
-                    continue;
-                }
-
                 if (NPC.downedBoss1)
                 {
                     return true;
                 }
-            }    
+            
             return false;
         }
-        */
+        
         public override List<string> SetNPCNameList()
         {
             return new List<string>() {
@@ -125,7 +117,7 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
             chat.Add("This message has a weight of 5, meaning it appears 5 times more often.", 5.0);
             chat.Add("This message has a weight of 0.1, meaning it appears 10 times as rare.", 0.1);
             return chat; // chat is implicitly cast to a string.
-        //Can be updated to a Localization firle, Example mod uses the following line of code for each line
+        //Can be updated to a Localization file (I think am not sure NPC stuff if not well documented), Example mod uses the following line of code for each line
         //chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.RareDialogue"), 0.1); 
         //The last number portion is optional, along with the comma befoire it and it adds weights to the frequency of the dialogue option
         //More reasearch into Localization files and other of these files for text needs to be done
@@ -146,22 +138,12 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
 
         public override void AddShops()
         {
-            NPCShop shop = new(Type);
+            NPCShop shop = new(Type);//Modify the shop costs to make more expensive or equally expensive to selling the bar varsion, due to each bar only costing 1 ore to make
+                                     //For Hellstone and Obsidian, amek sure each one is only a portion of the cost of the hellstone bar, else there is just no point in buying it
             shop.Add(ItemID.CopperOre)
             .Register();
                //Credit to the Calamity mod for where I learned to make this lol
         }
-
-        /*
-                public override void OnChatButtonClicked(bool firstButton, ref bool shop)
-                {
-                    if(firstButton)
-                    {
-                        shop = true;
-                    }
-                }
-        */
-
         /*
          * The old Shop
                 public override void SetupShop(Chest shop, ref int nextSlot)
