@@ -30,3 +30,6 @@ This is Just a Quality of Life Terraria Mod.
     --->Due to the afformentioned Ore change, the cost of all ingots for the ores modified have been reduced to their ore's buy cost **ADD
 
     //Add a localization file (Delete this after added)
+    //Edit fix recipes, add material specialist & add recipes for ore mat conversion
+
+    Credits to the kind people on the Tmodloader Discord & Github and the Calamity devs code for helping us add features and fix errors

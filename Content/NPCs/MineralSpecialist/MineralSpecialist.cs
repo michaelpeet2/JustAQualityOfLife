@@ -8,7 +8,9 @@ using Terraria.GameContent.Bestiary;
 using System.Collections.Generic;
 using Terraria.Utilities;
 using Terraria.Localization;
+using Terraria.IO;
 using Terraria.GameContent;
+using System.Runtime.InteropServices;
 
 namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
 {
@@ -138,156 +140,68 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
 
         public override void AddShops()
         {
-            NPCShop shop = new(Type);//Modify the shop costs to make more expensive or equally expensive to selling the bar varsion, due to each bar only costing 1 ore to make
-                                     //For Hellstone and Obsidian, amek sure each one is only a portion of the cost of the hellstone bar, else there is just no point in buying it
-            shop.Add(ItemID.CopperOre)
+            //The conditions that will allow us to set when certain items are able to start being sold
+            Condition downedEoC = Condition.DownedEyeOfCthulhu;
+            Condition downedBoss2 = Condition.DownedEowOrBoc;
+            Condition downedSkeleboi = Condition.DownedSkeletron;
+            Condition hardmode = Condition.Hardmode;
+            Condition oneMechKilled = Condition.DownedMechBossAny;
+            Condition downedMechBosses = Condition.DownedMechBossAll;
+            Condition downedMoonlord = Condition.DownedMoonLord;
+
+            NPCShop shop = new(Type);
+            //Copper & Tin 4 silver per
+            shop.Add(new Item(ItemID.CopperOre) {shopCustomPrice = Item.buyPrice(silver: 4) }, downedEoC)
+                .Add(new Item(ItemID.TinOre) {shopCustomPrice = Item.buyPrice(silver: 4) }, downedEoC)
+                //Lead and Iron
+                .Add(new Item(ItemID.LeadOre) { shopCustomPrice = Item.buyPrice(silver: 6) }, downedEoC)
+                .Add(new Item(ItemID.IronOre) { shopCustomPrice = Item.buyPrice(silver: 6) }, downedEoC)
+                //Tungsten & Silver
+                .Add(new Item(ItemID.TungstenOre) { shopCustomPrice = Item.buyPrice(silver:11) }, downedEoC)
+                .Add(new Item(ItemID.SilverOre) { shopCustomPrice = Item.buyPrice(silver: 11) }, downedEoC)
+                //Plat and Gold
+                .Add(new Item(ItemID.PlatinumOre) { shopCustomPrice = Item.buyPrice(silver: 20) }, downedEoC)
+                .Add(new Item(ItemID.GoldOre) { shopCustomPrice = Item.buyPrice(silver:20) }, downedEoC)
+                //Fossils
+                .Add(new Item(ItemID.DesertFossil) { shopCustomPrice = Item.buyPrice(silver: 40) }, downedEoC)
+                .Add(new Item(ItemID.FossilOre) { shopCustomPrice = Item.buyPrice(silver: 4) }, downedEoC)
+                //Crimtaine & Demonite 
+                .Add(new Item(ItemID.CrimtaneOre) { shopCustomPrice = Item.buyPrice(silver: 44) }, downedEoC)
+                .Add(new Item(ItemID.DemoniteOre) { shopCustomPrice = Item.buyPrice(silver: 44) }, downedEoC)
+                //Post EoW or BoC|| meteorites, Hellstone, Obsidian
+                .Add(new Item(ItemID.Meteorite) { shopCustomPrice = Item.buyPrice(silver: 17) }, downedBoss2)
+                .Add(new Item(ItemID.Obsidian) { shopCustomPrice = Item.buyPrice(silver: 4) }, downedBoss2)
+                .Add(new Item(ItemID.Hellstone) { shopCustomPrice = Item.buyPrice(silver: 46) }, downedBoss2)
+
+                //Hardmode Ores
+                //Cobalt & palladium
+                .Add(new Item(ItemID.CobaltOre) { shopCustomPrice = Item.buyPrice(silver: 35) }, hardmode)
+                .Add(new Item(ItemID.PalladiumOre) { shopCustomPrice = Item.buyPrice(silver: 35) }, hardmode)
+                //Mythril & Oricalch
+                .Add(new Item(ItemID.MythrilOre) { shopCustomPrice = Item.buyPrice(silver: 60) }, hardmode)
+                .Add(new Item(ItemID.OrichalcumOre) { shopCustomPrice = Item.buyPrice(silver: 60) }, hardmode)
+                //Titanium & Adamantite
+                .Add(new Item(ItemID.TitaniumOre) { shopCustomPrice = Item.buyPrice(silver: 75) }, hardmode)
+                .Add(new Item(ItemID.AdamantiteOre) { shopCustomPrice = Item.buyPrice(silver: 75) }, hardmode)
+                //Hallowed Bars
+                .Add(new Item(ItemID.HallowedBar) { shopCustomPrice = Item.buyPrice(silver: 50) }, hardmode, oneMechKilled)
+                //Chlorophyte
+                .Add(new Item(ItemID.ChlorophyteOre) { shopCustomPrice = Item.buyPrice(gold: 1) }, hardmode, downedMechBosses)
+                //Luminite
+                .Add(new Item(ItemID.LunarOre) { shopCustomPrice = Item.buyPrice(gold: 2) }, downedMoonlord)
+
+                //Gems
+                .Add(new Item(ItemID.Amethyst) { shopCustomPrice = Item.buyPrice(silver: 5) }, downedEoC)
+                .Add(new Item(ItemID.Topaz) { shopCustomPrice = Item.buyPrice(silver: 9) }, downedEoC)
+                .Add(new Item(ItemID.Sapphire) { shopCustomPrice = Item.buyPrice(silver: 13) }, downedEoC)
+                .Add(new Item(ItemID.Emerald) { shopCustomPrice = Item.buyPrice(silver: 16) }, downedEoC)
+                .Add(new Item(ItemID.Ruby) { shopCustomPrice = Item.buyPrice(silver: 25) }, downedEoC)
+                .Add(new Item(ItemID.Diamond) { shopCustomPrice = Item.buyPrice(silver: 33) }, downedEoC)
+                .Add(new Item(ItemID.Amber) { shopCustomPrice = Item.buyPrice(silver: 33) }, downedEoC)
             .Register();
-               //Credit to the Calamity mod for where I learned to make this lol
+            //.Add(new Item(ItemID.) {shopCustomPrice = Item.buyPrice(silver: 5) }, downedEoC)
         }
-        /*
-         * The old Shop
-                public override void SetupShop(Chest shop, ref int nextSlot)
-                {
-                    shop.item[nextSlot].SetDefaults(ItemID.CopperOre);
-                    shop.item[nextSlot].shopCustomPrice = 85;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.TinOre);
-                    shop.item[nextSlot].shopCustomPrice = 85;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.IronOre);
-                    shop.item[nextSlot].shopCustomPrice = 160;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.LeadOre);
-                    shop.item[nextSlot].shopCustomPrice = 160;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.SilverOre);
-                    shop.item[nextSlot].shopCustomPrice = 235;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.TungstenOre);
-                    shop.item[nextSlot].shopCustomPrice = 235;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.GoldOre);
-                    shop.item[nextSlot].shopCustomPrice = 460;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.PlatinumOre);
-                    shop.item[nextSlot].shopCustomPrice = 460;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.FossilOre);
-                    shop.item[nextSlot].shopCustomPrice = 460;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.DesertFossil);
-                    shop.item[nextSlot].shopCustomPrice = 1310;
-                    nextSlot++;
-
-                    if (NPC.downedBoss1)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.DemoniteOre);
-                        shop.item[nextSlot].shopCustomPrice = 1310;
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.CrimtaneOre);
-                        shop.item[nextSlot].shopCustomPrice = 1310;
-                        nextSlot++;
-                    }
-
-                    if (NPC.downedBoss2)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.Meteorite);
-                        shop.item[nextSlot].shopCustomPrice = 210;
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.Obsidian);
-                        shop.item[nextSlot].shopCustomPrice = 210;
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.Hellstone);
-                        shop.item[nextSlot].shopCustomPrice = 260;
-                        nextSlot++;
-                    }
-
-                    if(Main.hardMode)
-                    {
-                        shop.item[nextSlot].SetDefaults(ItemID.CobaltOre);
-                        shop.item[nextSlot].shopCustomPrice = 910;
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.PalladiumOre);
-                        shop.item[nextSlot].shopCustomPrice = 910;
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.MythrilOre);
-                        shop.item[nextSlot].shopCustomPrice = 1310;
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.OrichalcumOre);
-                        shop.item[nextSlot].shopCustomPrice = 13010;
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.AdamantiteOre);
-                        shop.item[nextSlot].shopCustomPrice = 17010;
-                        nextSlot++;
-
-                        shop.item[nextSlot].SetDefaults(ItemID.TitaniumOre);
-                        shop.item[nextSlot].shopCustomPrice = 17010;
-                        nextSlot++;
-
-                        if(NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-                        {
-                            shop.item[nextSlot].SetDefaults(ItemID.ChlorophyteOre);
-                            shop.item[nextSlot].shopCustomPrice = 1510;
-                            nextSlot++;
-
-                            shop.item[nextSlot].SetDefaults(ItemID.HallowedBar);
-                            shop.item[nextSlot].shopCustomPrice = 1010;
-                            nextSlot++;
-                        }
-
-                        if(NPC.downedMoonlord)
-                        {
-                            shop.item[nextSlot].SetDefaults(ItemID.LunarOre);
-                            shop.item[nextSlot].shopCustomPrice = 3010;
-                            nextSlot++;
-                        }
-                    }
-
-                    shop.item[nextSlot].SetDefaults(ItemID.Amethyst);
-                    shop.item[nextSlot].shopCustomPrice = 385;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.Topaz);
-                    shop.item[nextSlot].shopCustomPrice = 760;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.Sapphire);
-                    shop.item[nextSlot].shopCustomPrice = 1135;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.Emerald);
-                    shop.item[nextSlot].shopCustomPrice = 1510;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.Ruby);
-                    shop.item[nextSlot].shopCustomPrice = 2260;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.Amber);
-                    shop.item[nextSlot].shopCustomPrice = 3010;
-                    nextSlot++;
-
-                    shop.item[nextSlot].SetDefaults(ItemID.Diamond);
-                    shop.item[nextSlot].shopCustomPrice = 3010;
-                    nextSlot++;
-                }
-        */
+        //Credit to Calamity devs (code on their GitHub), and absoluteAquarian on the Tmodloader discord for assisting me in my confusion
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
             damage = 20;
