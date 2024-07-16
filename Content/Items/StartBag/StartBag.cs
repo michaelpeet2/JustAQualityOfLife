@@ -12,8 +12,8 @@ namespace JustAQualityOfLife.Content.Items.StartBag
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Starter Bag");
-            Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}"); //Sets the tooltip description of the Item
+            //DisplayName.SetDefault("Starter Bag");
+            //Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}"); //Sets the tooltip description of the Item
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
 

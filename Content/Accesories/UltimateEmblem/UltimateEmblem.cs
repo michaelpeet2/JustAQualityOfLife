@@ -10,7 +10,7 @@ namespace JustAQualityOfLife.Content.Accesories.UltimateEmblem
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault(" 12% Crit Strike Chance \n 15% Damage Increase");
+            //Tooltip.SetDefault(" 12% Crit Strike Chance \n 15% Damage Increase");
             //Sets the tooltip description of the Item
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;

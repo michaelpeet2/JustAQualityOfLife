@@ -1,38 +1,32 @@
 This is Just a Quality of Life Terraria Mod.
-     by : michaelpeet2, Stab_Person, cyber
+     by : michaelpeet2, cyber
 
-v2.1.0.0
+     v2.1
 
-So this has been in the works since we first released our mod in 2020. Yeah it's been a while, but first I would like to thank our new sprites Stab_Person who helped us inmprove some sprites.
+    This is the new Version of the Just a Quality of Life Terraria mod, finnaly ported from 1.3.5 tmodloader
 
-As we are beginners the stuff is very rudamentary. We will not have a regular update schedule, but will try to uopdate every so often. 
+    v2.1 currently contains
+    1 NPC (Currently only ExampleMod model)
+    1 Item
+    2 Accesories
+    Some Recipie Modifications
+    _
+    MasterAnkh Gear
+    --->A combination of Ankh Shield and Master Ninja Gear
 
-We have rebuilt our mod from the ground up, so it will take a while before all the items are back in the mod. 
+    Ultimate Emblem
+    --->A combination of most of all the vanilla emblems
 
-We also have many more exiting features planned.
+    Mineral Specialist
+    --->NPC that sells ores and gems
 
-v2.0.0.0
+    Starter Bag
+    --->Gives you a bunch of stuff when you styart the game
 
-This mod currently adds
->2 new accesories 
->1 new NPC
+    Recipe Modifications:
+    --->Ores now only require 1 of each ore type.
 
---> Ultimite Elblem
----> Crafted with a WarriorEmblem, RangerEmblem, SorcererEmblem, SummonerEmblem, AvengerEmblem, and DestroyerEmblem at a mithril anvil
-----> Grants 15% incresed of every damage type
-----> Grants 10% increased of every crit chance
+    Cost Modification
+    --->Due to the afformentioned Ore change, the cost of all ingots for the ores modified have been reduced to their ore's buy cost **ADD
 
-
-
--->Master Ankh Gear
----> Crafted with a Ankh shield and Master Ninja Gear at a mithril anvil
----->Has the effects of the Master Ninja Gear and the Ankh Shield
-----> Has the bonus perk of negating fall damage
-
--->Mineral Specialist
---->Spawns after eye of cthulu was defeated
-----> Sells ores and gems
-
-
-
-   Lastly we would like to thank all the kind people on the Tmodloader Discord. Additionally thank you the people on the Terraria forums and the Github.
+    //Add a localization file (Delete this after added)

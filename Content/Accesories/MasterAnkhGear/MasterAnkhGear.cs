@@ -11,8 +11,8 @@ namespace JustAQualityOfLife.Content.Accesories.MasterAnkhGear
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Master Ankh Gear"); //changes the name of the item instead of just using the public class
-			Tooltip.SetDefault("Allows dash, wall climbing, and a chance to dodge attacks \nAllows immunity to most debuffs, knockback, and fall damage."); //Sets the tooltip description of the Item
+			//DisplayName.SetDefault("Master Ankh Gear"); //changes the name of the item instead of just using the public class
+			//Tooltip.SetDefault("Allows dash, wall climbing, and a chance to dodge attacks \nAllows immunity to most debuffs, knockback, and fall damage."); //Sets the tooltip description of the Item
 			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 		}
 
