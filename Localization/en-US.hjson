@@ -6,30 +6,42 @@ Mods: {
 				Tooltip:
 					'''
 					Allows dash, wall climbing, and a chance to dodge attacks 
-					Allows immunity to most debuffs, knockback, and fall damage.
-					WIP currently uncraftable
+					Allows immunity to most debuffs, knockback, and fall damage
+					Increases the Size of melee weapons
+					Provides +12% melee attack speed
+					Provides +10% melee damage
+					Increases the size of melee weapons & whips
+					Enemies are more likely to target you
 					'''
 			}
 
 			MasterAnkhGear: {
 				DisplayName: Master Ankh Gear
-				Tooltip: ""
+				Tooltip:
+					'''
+					Allows dash, wall climbing, and a chance to dodge attacks 
+					Allows immunity to most debuffs, knockback, and fall damage
+					'''
 			}
 
 			UltimateEmblem: {
 				DisplayName: Ultimate Emblem
-				Tooltip: ""
+				Tooltip: 
+				'''
+				Provides +18% Damage Bonus
+				Provides +12% Crit Chance
+				'''
 			}
 
 			StartBag: {
 				DisplayName: Start Bag
-				Tooltip: ""
+				Tooltip: 
+				'''
+				When opend provides the player with supplies to get started
+				{$CommonItemTooltip.RightClickToOpen}
+				'''
 			}
 
-			Sample: {
-				DisplayName: Sample
-				Tooltip: ""
-			}
 		}
 
 		NPCs: {
