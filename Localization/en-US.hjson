@@ -8,8 +8,8 @@ Mods: {
 					Allows dash, wall climbing, and a chance to dodge attacks 
 					Allows immunity to most debuffs, knockback, and fall damage
 					Increases the Size of melee weapons
-					Provides +12% melee attack speed
-					Provides +10% melee damage
+					12% increased melee attack speed
+					10% increased melee damage
 					Increases the size of melee weapons & whips
 					Enemies are more likely to target you
 					'''
@@ -26,22 +26,21 @@ Mods: {
 
 			UltimateEmblem: {
 				DisplayName: Ultimate Emblem
-				Tooltip: 
-				'''
-				Provides +18% Damage Bonus
-				Provides +12% Crit Chance
-				'''
+				Tooltip:
+					'''
+					18% increased damage
+					12% increased crit strike chance
+					'''
 			}
 
 			StartBag: {
 				DisplayName: Start Bag
-				Tooltip: 
-				'''
-				When opend provides the player with supplies to get started
-				{$CommonItemTooltip.RightClickToOpen}
-				'''
+				Tooltip:
+					'''
+					When opend provides the player with supplies to get started
+					{$CommonItemTooltip.RightClickToOpen}
+					'''
 			}
-
 		}
 
 		NPCs: {

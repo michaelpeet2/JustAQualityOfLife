@@ -19,10 +19,11 @@ namespace JustAQualityOfLife.Content.Items.StartBag
 
         public override void SetDefaults()
         {
-            Item.maxStack = 9999;
+            Item.maxStack = 1;
             Item.consumable = true;
             Item.width = 24;
             Item.height = 24;
+            Item.value = 0;
             Item.rare = ItemRarityID.Purple;
 
         }
