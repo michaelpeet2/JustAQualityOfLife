@@ -23,6 +23,22 @@ namespace JustAQualityOfLife.Content.Systems
             RecipeGroup.RegisterGroup("JQL_AnyEmblem", JQL_AnyEmblem);
         }
 
+        public override void AddRecipes()
+        {
+
+            Recipe.Create(ItemID.HermesBoots)
+                .AddIngredient(ItemID.WoodGreaves)
+                .AddIngredient(ItemID.Silk, 12)
+                .AddIngredient(ItemID.SwiftnessPotion)
+                .AddTile(TileID.Anvils)
+                .Register();
+
+            Recipe.Create(ItemID.Extractinator)
+                .AddIngredient(ItemID.IronBar, 15)
+                .AddTile(TileID.Anvils)
+                .Register();
+        }
+
         public override void PostAddRecipes()/* tModPorter Note: Removed. Use ModSystem.PostAddRecipes */
         {
             #region Bars
