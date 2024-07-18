@@ -36,6 +36,7 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
                 Velocity = 1f,
                 Direction = -1
             };
+            //Old Codem revide within a revision of MinSpec
 
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
@@ -95,10 +96,10 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
         public override List<string> SetNPCNameList()
         {
             return new List<string>() {
-                "Femboy",
+                "Carns Expert",
                 "Miner Boy",
-                "Square boi",
-                "UwU overlord"
+                "Cave Crawler",
+                "Excavator"
             };
         }
 

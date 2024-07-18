@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
+using JustAQualityOfLife.Content.Systems;
 
 namespace JustAQualityOfLife.Content.Accesories.UltimateEmblem
 {
@@ -10,9 +11,6 @@ namespace JustAQualityOfLife.Content.Accesories.UltimateEmblem
     {
         public override void SetStaticDefaults()
         {
-            //Tooltip.SetDefault(" 12% Crit Strike Chance \n 15% Damage Increase");
-            //Sets the tooltip description of the Item
-
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
         }
@@ -26,7 +24,9 @@ namespace JustAQualityOfLife.Content.Accesories.UltimateEmblem
         public override void UpdateAccessory(Player player, bool hideVisual) //Modifiers
         {
             //Damage
-            player.GetDamage(DamageClass.Generic) *= 1.15f; //Increase 12%
+            player.GetDamage(DamageClass.Generic) += .18f; //Increase 12%
+            
+
 
             //damage boost
             player.GetCritChance(DamageClass.Generic) += 12; //Crit 12 percent
@@ -35,14 +35,11 @@ namespace JustAQualityOfLife.Content.Accesories.UltimateEmblem
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ItemID.WarriorEmblem)//ingredient
-                .AddIngredient(ItemID.RangerEmblem)//ingredient
-                .AddIngredient(ItemID.SorcererEmblem)//ingredient
-                .AddIngredient(ItemID.SummonerEmblem)//ingredient
+                .AddRecipeGroup("JQL_AnyEmblem")
                 .AddIngredient(ItemID.AvengerEmblem)//ingredient
                 .AddIngredient(ItemID.DestroyerEmblem)//ingredient
-
-.AddTile(TileID.MythrilAnvil)//mod.TileType("CrafterOqualityTile")
+                .AddTile(TileID.TinkerersWorkbench)
+                .AddTile(TileID.MythrilAnvil)
                 .Register();
         }
     }

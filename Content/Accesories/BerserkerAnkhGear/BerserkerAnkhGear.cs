@@ -31,8 +31,7 @@ namespace JustAQualityOfLife.Content.Accesories.BerserkerAnkhGear
         //Unfinished needs the other upgrades from beserker glove. Asside from Defence and Attackspeed
         public override void UpdateAccessory(Player player, bool hideVisual) //grant immunities
 		{
-			//atkspeed
-			player.GetAttackSpeed(DamageClass.Generic) += .12f;
+			//Autoswing
 
 			//debuffs
 			player.buffImmune[67] = true; //Burning
@@ -55,19 +54,28 @@ namespace JustAQualityOfLife.Content.Accesories.BerserkerAnkhGear
 									//Movement
 			player.dashType = 1;
 			player.spikedBoots = 2;//Can Climb
-		}
-		/*
+
+			//Stat Increases
+			player.aggro += 400;
+            player.GetAttackSpeed(DamageClass.Melee) += .12f;
+			player.kbGlove = true;
+			player.GetDamage(DamageClass.Melee) += .1f;
+			player.meleeScaleGlove = true;
+			player.whipRangeMultiplier += .1f;
+        }
+		
 		public override void AddRecipes()
 				{
 
 					CreateRecipe()
 						.AddIngredient(ModContent.ItemType<Accesories.MasterAnkhGear.MasterAnkhGear>())
 						.AddIngredient(ItemID.BerserkerGlove)
-						.AddTile(TileID.MythrilAnvil)//mod.TileType("CrafterOqualityTile")
+						.AddTile(TileID.MythrilAnvil)
+						.AddTile(TileID.TinkerersWorkbench)
 						.Register();
 
 				}
-		*/
+		
 
 	}
 }
