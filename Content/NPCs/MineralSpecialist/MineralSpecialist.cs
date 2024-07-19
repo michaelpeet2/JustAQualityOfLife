@@ -11,13 +11,15 @@ using Terraria.Localization;
 using Terraria.IO;
 using Terraria.GameContent;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
 {
     [AutoloadHead]
     public class MineralSpecialist : ModNPC
     {
-        public const string ShopName = "Shop";
+        public static string VanillaShop = "Shop1";
+        public static string ModdedShop = "Shop2";
         public int NumberOfTimesTalkedTo = 0;
 
         public override void SetStaticDefaults()
@@ -36,7 +38,7 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
                 Velocity = 1f,
                 Direction = -1
             };
-            //Old Codem revide within a revision of MinSpec
+            //Old Code revide within a revision of MinSpec
 
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
@@ -128,20 +130,31 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
 
         public override void SetChatButtons(ref string button, ref string button2)
         { // What the chat buttons are when you open up the chat UI
+            string shop2 = Language.GetTextValue("LegacyInterface.28") + "2";
             button = Language.GetTextValue("LegacyInterface.28");
+            button2 = shop2;
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             if (firstButton)
             {
-                shopName = "Shop"; 
+                shopName = VanillaShop; 
             }
+            else
+            {
+                shopName = ModdedShop;
+            }
+
+
+
         }
 
         public override void AddShops()
         {
+            ModLoader.TryGetMod("CalamityMod", out Mod Calamity);
             //The conditions that will allow us to set when certain items are able to start being sold
+            #region VanillaConditions
             Condition downedEoC = Condition.DownedEyeOfCthulhu;
             Condition downedBoss2 = Condition.DownedEowOrBoc;
             Condition downedSkeleboi = Condition.DownedSkeletron;
@@ -149,20 +162,24 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
             Condition oneMechKilled = Condition.DownedMechBossAny;
             Condition downedMechBosses = Condition.DownedMechBossAll;
             Condition downedMoonlord = Condition.DownedMoonLord;
+            Condition downedPlantera = Condition.DownedPlantera;
+            Condition downedGolem = Condition.DownedGolem;
+            #endregion
 
-            NPCShop shop = new(Type);
+            #region Shop1
+            NPCShop shop = new(Type, VanillaShop);
             //Copper & Tin 4 silver per
-            shop.Add(new Item(ItemID.CopperOre) {shopCustomPrice = Item.buyPrice(silver: 4) }, downedEoC)
-                .Add(new Item(ItemID.TinOre) {shopCustomPrice = Item.buyPrice(silver: 4) }, downedEoC)
+            shop.Add(new Item(ItemID.CopperOre) { shopCustomPrice = Item.buyPrice(silver: 4) }, downedEoC)
+                .Add(new Item(ItemID.TinOre) { shopCustomPrice = Item.buyPrice(silver: 4) }, downedEoC)
                 //Lead and Iron
                 .Add(new Item(ItemID.LeadOre) { shopCustomPrice = Item.buyPrice(silver: 6) }, downedEoC)
                 .Add(new Item(ItemID.IronOre) { shopCustomPrice = Item.buyPrice(silver: 6) }, downedEoC)
                 //Tungsten & Silver
-                .Add(new Item(ItemID.TungstenOre) { shopCustomPrice = Item.buyPrice(silver:11) }, downedEoC)
+                .Add(new Item(ItemID.TungstenOre) { shopCustomPrice = Item.buyPrice(silver: 11) }, downedEoC)
                 .Add(new Item(ItemID.SilverOre) { shopCustomPrice = Item.buyPrice(silver: 11) }, downedEoC)
                 //Plat and Gold
                 .Add(new Item(ItemID.PlatinumOre) { shopCustomPrice = Item.buyPrice(silver: 20) }, downedEoC)
-                .Add(new Item(ItemID.GoldOre) { shopCustomPrice = Item.buyPrice(silver:20) }, downedEoC)
+                .Add(new Item(ItemID.GoldOre) { shopCustomPrice = Item.buyPrice(silver: 20) }, downedEoC)
                 //Fossils
                 .Add(new Item(ItemID.DesertFossil) { shopCustomPrice = Item.buyPrice(silver: 40) }, downedEoC)
                 .Add(new Item(ItemID.FossilOre) { shopCustomPrice = Item.buyPrice(silver: 4) }, downedEoC)
@@ -200,7 +217,75 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
                 .Add(new Item(ItemID.Diamond) { shopCustomPrice = Item.buyPrice(silver: 33) }, downedEoC)
                 .Add(new Item(ItemID.Amber) { shopCustomPrice = Item.buyPrice(silver: 33) }, downedEoC)
             .Register();
+            #endregion
+
+            #region Shop2
+            NPCShop Shop2 = new(Type, ModdedShop);
+
+            if (ModLoader.TryGetMod("CalamityMod", out Mod calamityMod)) 
+            {
+                
+                if (calamityMod.TryFind("SeaPrism", out ModItem seaPrism))
+                {
+                    Shop2.Add(new Item(seaPrism.Type) { shopCustomPrice = Item.buyPrice(silver: 8) });
+                }
+                if (calamityMod.TryFind("AerialiteOre", out ModItem aerialiteOre))//Hive & Perf
+                {
+                    Shop2.Add(new Item(aerialiteOre.Type) {shopCustomPrice = Item.buyPrice(silver: 8) }, new Condition("", () => (bool)calamityMod.Call("GetBossDowned", "hivemind")));
+                    Shop2.Add(new Item(aerialiteOre.Type) { shopCustomPrice = Item.buyPrice(silver: 8) }, new Condition("", () => (bool)calamityMod.Call("GetBossDowned", "perforator")));
+                }
+                if (calamityMod.TryFind("InfernalSuevite", out ModItem infernalOre))//1 Mech
+                {
+                    Shop2.Add(new Item(infernalOre.Type) { shopCustomPrice = Item.buyPrice(silver: 8) }, oneMechKilled);
+                }
+                if (calamityMod.TryFind("CryonicOre", out ModItem cryonicOre))//Cryogen
+                {
+                    Shop2.Add(new Item(cryonicOre.Type) { shopCustomPrice = Item.buyPrice(silver: 8) }, new Condition("", () => (bool)calamityMod.Call("GetBossDowned", "cryogen")));
+                }
+                if (calamityMod.TryFind("HallowedOre", out ModItem hallowedOre))//All Mechs
+                {
+                    Shop2.Add(new Item(hallowedOre.Type) { shopCustomPrice = Item.buyPrice(silver: 8) }, downedMechBosses);
+                }
+                if (calamityMod.TryFind("PerennialOre", out ModItem perennialOre))//Plantera
+                {
+                    Shop2.Add(new Item(perennialOre.Type) { shopCustomPrice = Item.buyPrice(silver: 8) }, downedPlantera);
+                }
+                if (calamityMod.TryFind("ScoriaOre", out ModItem scoriaOre))//Golem
+                {
+                    Shop2.Add(new Item(scoriaOre.Type) { shopCustomPrice = Item.buyPrice(silver: 8) }, downedGolem);
+                }
+                if (calamityMod.TryFind("AstralOre", out ModItem astralOre))//AstrumDeus
+                {
+                    Shop2.Add(new Item(astralOre.Type) { shopCustomPrice = Item.buyPrice(silver: 8) }, new Condition("", () => (bool)calamityMod.Call("GetBossDowned", "astrumdeus")));
+                }
+                if (calamityMod.TryFind("ExodiumCluster", out ModItem exodiumOre))//MoonLord
+                {
+                    Shop2.Add(new Item(exodiumOre.Type) { shopCustomPrice = Item.buyPrice(silver: 8) }, downedMoonlord);
+                }
+                if (calamityMod.TryFind("UelibloomOre", out ModItem uelibloomOre))//Providence
+                {
+                    Shop2.Add(new Item(uelibloomOre.Type) { shopCustomPrice = Item.buyPrice(silver: 8) }, new Condition("", () => (bool)calamityMod.Call("GetBossDowned", "providence")));
+                }
+                if (calamityMod.TryFind("AuricOre", out ModItem auricOre))//yahron
+                {
+                    Shop2.Add(new Item(auricOre.Type) { shopCustomPrice = Item.buyPrice(silver: 8)},new Condition("", () => (bool)calamityMod.Call("GetBossDowned", "yharon")));
+                }
+
+                //calamityMod.Call("GetBossDowned", "yharon")
+            }
+
+
+
+
+
+
+
+
+            Shop2.Register();
+            #endregion
+
             //.Add(new Item(ItemID.) {shopCustomPrice = Item.buyPrice(silver: 5) }, downedEoC)
+            //
         }
         //Credit to Calamity devs (code on their GitHub), and absoluteAquarian on the Tmodloader discord for assisting me in my confusion
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -214,6 +299,5 @@ namespace JustAQualityOfLife.Content.NPCs.MineralSpecialist
             cooldown = 30;
             randExtraCooldown = 30;
         }
-
     }
 }

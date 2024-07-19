@@ -19,6 +19,7 @@ This is Just a Quality of Life Terraria Mod.
 
     Mineral Specialist
     --->NPC that sells ores and gems
+    --->Has Calamity mod support
 
     Starter Bag
     --->Gives you a bunch of stuff when you styart the game
@@ -31,5 +32,6 @@ This is Just a Quality of Life Terraria Mod.
 
     //Add a localization file (Delete this after added)
     //Edit fix recipes, add material specialist & add recipes for ore mat conversion
+    //Add Recipes for Asphault platform to Asphault
 
     Credits to the kind people on the Tmodloader Discord & Github and the Calamity devs code for helping us add features and fix errors
