@@ -29,4 +29,3 @@ This is Just a Quality of Life Terraria Mod.
     Cost Modification
     --->Due to the afformentioned Ore change, the cost of all ingots for the ores modified have been reduced to their ore's buy cost **ADD
 
-    //Add a localization file (Delete this after added)
